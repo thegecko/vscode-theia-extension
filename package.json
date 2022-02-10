@@ -7,19 +7,22 @@
   "repository": "https://github.com/thegecko/vscode-theia-extension",
   "author": "Rob Moran <github@thegecko.org>",
   "scripts": {
-    "prepare": "yarn build",
-    "clean": "git clean -f -x ./node_modules && lerna run clean && lerna clean --yes",
-    "build": "lerna run build"
-  },
-  "dependencies": {
+    "prepare": "yarn build && yarn package",
+    "clean": "lerna run clean && lerna clean --yes",
+    "build": "lerna run build",
+    "package": "lerna run package"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
   },
+  "resolutions": {
+    "@types/react": "16.14.23"
+  },
   "workspaces": {
     "packages": [
       "api",
-      "extension"
+      "extension",
+      "ide"
     ]
   }
 }

@@ -12,7 +12,8 @@
             "args": [
                 "--log-level=debug",
                 "--hostname=0.0.0.0",
-                "--no-cluster"
+                "--no-cluster",
+                "--plugins=local-dir:${workspaceFolder}/extension"
             ],
             "env": {
                 "NODE_ENV": "development"

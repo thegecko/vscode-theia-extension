@@ -1,5 +1,5 @@
 {
-  "name": "@extension/extension",
+  "name": "extension",
   "displayName": "Extension",
   "description": "Sample repository showing a VS Code extension which also extends functionality in a Theia app",
   "version": "1.0.0",
@@ -13,15 +13,19 @@
   "engines": {
     "vscode": "^1.50.0"
   },
-  "scripts": {
-    "prepare": "yarn build",
-    "clean": "git clean -f -x ./node_modules ./lib",
-    "build": "tsc"
+  "dependencies": {
+    "@types/vscode": "^1.50.0"
   },
   "devDependencies": {
     "@extension/api": "^1.0.0",
-    "@types/vscode": "^1.50.0",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "vsce-yarn-patch": "^1.66.2"
+  },
+  "scripts": {
+    "prepare": "yarn build",
+    "clean": "git clean -f -x ./node_modules ./lib",
+    "build": "tsc",
+    "package": "vsce package --yarn"
   },
   "contributes": {
     "commands": [

@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": [
-      "es5",
-      "es2015.promise"
+      "ES2017",
+      "ES2020.Promise",
+      "dom"
     ],
+    "jsx": "react",
     "strict": true,
     "downlevelIteration": true,
     "noImplicitReturns": true,
@@ -13,9 +15,5 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "lib"
-  },
-  "include": [
-    "src"
-  ]
+  }
 }
