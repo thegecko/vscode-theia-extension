@@ -16,14 +16,12 @@
   "scripts": {
     "prepare": "yarn build",
     "clean": "git clean -f -x ./node_modules ./lib",
-    "build": "tsc",
-    "package": "vsce package --yarn"
+    "build": "tsc"
   },
   "devDependencies": {
     "@extension/api": "^1.0.0",
     "@types/vscode": "^1.50.0",
-    "typescript": "^3.9.6",
-    "vsce-yarn-patch": "^1.66.2"
+    "typescript": "^3.9.6"
   },
   "contributes": {
     "commands": [
@@ -37,7 +35,7 @@
         {
           "id": "extension",
           "title": "Extension",
-          "icon": "output"
+          "icon": "$(output)"
         }
       ]
     },
@@ -46,7 +44,8 @@
         {
           "id": "extension.data",
           "type": "tree",
-          "name": "Data"
+          "name": "Data",
+          "when": "extension.showViews"
         }
       ]
     },

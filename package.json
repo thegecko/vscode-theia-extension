@@ -9,8 +9,7 @@
   "scripts": {
     "prepare": "yarn build",
     "clean": "git clean -f -x ./node_modules && lerna run clean && lerna clean --yes",
-    "build": "lerna run build",
-    "package": "lerna run package"
+    "build": "lerna run build"
   },
   "dependencies": {
   },

@@ -20,9 +20,9 @@
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceFolder}/node_modules/@theia/*/lib/**/*.js",
-                "${workspaceFolder}/ide/dist/**/*.js",
+                "${workspaceFolder}/ide/lib/**/*.js",
                 "${workspaceFolder}/ide/src-gen/**/*.js",
-                "${workspaceFolder}/ide-ext/dist/**/*.js"
+                "${workspaceFolder}/ide-ext/lib/**/*.js"
             ],
             "smartStep": true,
             "internalConsoleOptions": "openOnSessionStart"
@@ -46,7 +46,7 @@
                 "--extensionDevelopmentPath=${workspaceFolder}/extension"
             ],
             "outFiles": [
-                "${workspaceFolder}/extension/dist/**/*.js"
+                "${workspaceFolder}/extension/lib/**/*.js"
             ]
         }
     ],
