@@ -1,0 +1,26 @@
+{
+  "name": "vscode-theia-extension",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sample repository showing a VS Code extension which also extends functionality in a Theia app",
+  "homepage": "https://github.com/thegecko/vscode-theia-extension",
+  "repository": "https://github.com/thegecko/vscode-theia-extension",
+  "author": "Rob Moran <github@thegecko.org>",
+  "scripts": {
+    "prepare": "yarn build",
+    "clean": "git clean -f -x ./node_modules && lerna run clean && lerna clean --yes",
+    "build": "lerna run build",
+    "package": "lerna run package"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "workspaces": {
+    "packages": [
+      "api",
+      "extension"
+    ]
+  }
+}

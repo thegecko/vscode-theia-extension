@@ -1,0 +1,64 @@
+{
+  "name": "@extension/extension",
+  "displayName": "Extension",
+  "description": "Sample repository showing a VS Code extension which also extends functionality in a Theia app",
+  "version": "1.0.0",
+  "preview": true,
+  "private": true,
+  "publisher": "thegecko",
+  "author": "Rob Moran <github@thegecko.org>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": "https://github.com/thegecko/vscode-theia-extension",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "scripts": {
+    "prepare": "yarn build",
+    "clean": "git clean -f -x ./node_modules ./lib",
+    "build": "tsc",
+    "package": "vsce package --yarn"
+  },
+  "devDependencies": {
+    "@extension/api": "^1.0.0",
+    "@types/vscode": "^1.50.0",
+    "typescript": "^3.9.6",
+    "vsce-yarn-patch": "^1.66.2"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "showData",
+        "title": "Show Data"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "extension",
+          "title": "Extension",
+          "icon": "output"
+        }
+      ]
+    },
+    "views": {
+      "extension": [
+        {
+          "id": "extension.data",
+          "type": "tree",
+          "name": "Data"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "extension.data",
+        "contents": "[Show Data](command:showData)"
+      }
+    ],
+    "menus": {}
+  },
+  "activationEvents": [
+    "*"
+  ]
+}

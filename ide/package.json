@@ -1,0 +1,79 @@
+{
+  "private": true,
+  "name": "@extension/ide",
+  "version": "1.22.1",
+  "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+  "theia": {
+    "frontend": {
+      "config": {
+        "applicationName": "Theia Extension Example",
+        "preferences": {
+          "files.enableTrash": false
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@extension/ide-ext": "1.0.0",
+    "@theia/bulk-edit": "1.22.1",
+    "@theia/callhierarchy": "1.22.1",
+    "@theia/console": "1.22.1",
+    "@theia/core": "1.22.1",
+    "@theia/debug": "1.22.1",
+    "@theia/editor": "1.22.1",
+    "@theia/editor-preview": "1.22.1",
+    "@theia/file-search": "1.22.1",
+    "@theia/filesystem": "1.22.1",
+    "@theia/getting-started": "1.22.1",
+    "@theia/git": "1.22.1",
+    "@theia/keymaps": "1.22.1",
+    "@theia/markers": "1.22.1",
+    "@theia/messages": "1.22.1",
+    "@theia/metrics": "1.22.1",
+    "@theia/mini-browser": "1.22.1",
+    "@theia/monaco": "1.22.1",
+    "@theia/navigator": "1.22.1",
+    "@theia/outline-view": "1.22.1",
+    "@theia/output": "1.22.1",
+    "@theia/plugin-dev": "1.22.1",
+    "@theia/plugin-ext": "1.22.1",
+    "@theia/plugin-ext-vscode": "1.22.1",
+    "@theia/plugin-metrics": "1.22.1",
+    "@theia/preferences": "1.22.1",
+    "@theia/preview": "1.22.1",
+    "@theia/process": "1.22.1",
+    "@theia/property-view": "1.22.1",
+    "@theia/scm": "1.22.1",
+    "@theia/scm-extra": "1.22.1",
+    "@theia/search-in-workspace": "1.22.1",
+    "@theia/task": "1.22.1",
+    "@theia/terminal": "1.22.1",
+    "@theia/timeline": "1.22.1",
+    "@theia/typehierarchy": "1.22.1",
+    "@theia/userstorage": "1.22.1",
+    "@theia/variable-resolver": "1.22.1",
+    "@theia/vsx-registry": "1.22.1",
+    "@theia/workspace": "1.22.1"
+  },
+  "scripts": {
+    "clean": "theia clean",
+    "build": "yarn -s compile && yarn -s bundle",
+    "bundle": "theia build --mode development",
+    "compile": "tsc -b",
+    "coverage": "yarn -s test --test-coverage && yarn -s coverage:report",
+    "coverage:clean": "rimraf .nyc_output && rimraf coverage",
+    "coverage:report": "nyc report --reporter=html",
+    "rebuild": "theia rebuild:browser --cacheRoot ../..",
+    "start": "yarn -s rebuild && theia start --plugins=local-dir:../../plugins",
+    "start:debug": "yarn -s start --log-level=debug",
+    "start:watch": "concurrently --kill-others -n tsc,bundle,run -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\" \"yarn -s start\"",
+    "test": "yarn -s rebuild && theia test . --plugins=local-dir:../../plugins --test-spec=../api-tests/**/*.spec.js",
+    "test:debug": "yarn -s test --test-inspect",
+    "watch": "concurrently --kill-others -n tsc,bundle -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s watch:bundle\"",
+    "watch:bundle": "theia build --watch --mode development",
+    "watch:compile": "tsc -b -w"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.22.1"
+  }
+}
