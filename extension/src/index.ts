@@ -14,12 +14,12 @@ export const activate = async (context: vscode.ExtensionContext): Promise<void> 
         }),
     );
 
-    if (vscode.env.appHost === THEIA_APP_NAME) {
+    if (vscode.env.appName === THEIA_APP_NAME) {
         // Implement Theia API
         const api = await import('@extension/api');
         api.host.getDataHandler(() => getData());
-    } else {
-        // Enable VS Code views
-        vscode.commands.executeCommand('setContext', 'extension.showViews', true);
     }
+
+    // Enable VS Code views
+    vscode.commands.executeCommand('setContext', 'extension.showViews', vscode.env.appName !== THEIA_APP_NAME);
 };

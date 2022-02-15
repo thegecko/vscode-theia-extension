@@ -22,7 +22,8 @@
     "packages": [
       "api",
       "extension",
-      "ide"
+      "ide",
+      "ide-ext"
     ]
   }
 }

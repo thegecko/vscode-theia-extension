@@ -13,6 +13,8 @@
     "noUnusedParameters": true,
     "sourceMap": true,
     "declaration": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
     "outDir": "lib"
   },
   "include": [

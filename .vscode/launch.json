@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "IDE Backend",
+            "name": "IDE (Backend)",
             "type": "node",
             "request": "launch",
             "program": "${workspaceFolder}/ide/src-gen/backend/main.js",
@@ -29,7 +29,7 @@
             "internalConsoleOptions": "openOnSessionStart"
         },
         {
-            "name": "IDE Frontend",
+            "name": "IDE (Frontend)",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:3000",
@@ -53,10 +53,10 @@
     ],
     "compounds": [
         {
-            "name": "Launch IDE",
+            "name": "IDE",
             "configurations": [
-                "IDE Backend",
-                "IDE Frontend"
+                "IDE (Backend)",
+                "IDE (Frontend)"
             ],
             "stopAll": true
         }

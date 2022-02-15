@@ -4,13 +4,13 @@ import { Command, CommandContribution, CommandRegistry } from '@theia/core/lib/c
 @injectable()
 export class Contribution implements CommandContribution {
 
-    protected readonly serialCommand: Command = {
+    protected readonly command: Command = {
         id: 'vscode.devices.requestPort',
         label: 'Request Port'
     };
 
     registerCommands(commands: CommandRegistry): void {
-        commands.registerCommand(this.usbCommand, {
+        commands.registerCommand(this.command, {
             execute: async () => {
                 return undefined;
             }
