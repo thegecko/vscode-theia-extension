@@ -53,7 +53,7 @@
     ],
     "compounds": [
         {
-            "name": "IDE",
+            "name": "Theia IDE",
             "configurations": [
                 "IDE (Backend)",
                 "IDE (Frontend)"

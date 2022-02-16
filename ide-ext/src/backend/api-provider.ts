@@ -6,7 +6,7 @@ import { ExtPluginApi, ExtPluginApiProvider } from '@theia/plugin-ext';
 export class apiProvider implements ExtPluginApiProvider {
     provideApi(): ExtPluginApi {
         return {
-            backendInitPath: path.join(__dirname, 'implementation.js')
+            backendInitPath: path.join(__dirname, '..', 'host', 'index.js')
         };
     }
 }
