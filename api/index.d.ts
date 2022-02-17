@@ -1,25 +1,12 @@
-// import { Event } from '@theia/plugin';
-// export { Event };
+import { Event } from 'vscode';
 
 declare module '@extension/api' {
-    export interface AuthenticationProvidersChangeEvent {
-        /**
-         * The ids of the [authenticationProvider](#AuthenticationProvider)s that have been added.
-         */
-        readonly added: boolean;
-
-        /**
-         * The ids of the [authenticationProvider](#AuthenticationProvider)s that have been removed.
-         */
-        readonly removed: boolean;
-    }
-
     export namespace host {
-        // Call into theia
-        export function addDevice(device: string): void;
-        // request for date in plugin
-        export function getDataHandler(handler: () => string): void;
+        // Call into host
+        export function showMessage(message: string): void;
+        // Request for message in extension
+        export function getMessageHandler(handler: () => string): void;
         // Event in Theia
-        // export const onDidChangeAuthenticationProviders: Event<AuthenticationProvidersChangeEvent>;
+        export const onRequestMessage: Event<string>;
     }
 }

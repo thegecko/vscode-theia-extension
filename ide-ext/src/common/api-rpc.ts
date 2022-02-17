@@ -2,13 +2,13 @@ import { createProxyIdentifier, RPCProtocol } from '@theia/plugin-ext/lib/common
 
 // API exposed for browser to call into plugin
 export interface ApiExt {
-    $onDidChangeAuthenticationProviders(added: boolean, removed: boolean): Promise<void>;
-    $getData(): Promise<string | undefined>;
+    $onRequestMessage(actor: string): Promise<void>;
+    $getMessage(): Promise<string | undefined>;
 }
 
 // API exposed for plugin to call into browser
 export interface ApiMain {
-    $addDevice(device: string): void;
+    $showMessage(message: string): void;
 }
 
 export const API_RPC_CONTEXT = {

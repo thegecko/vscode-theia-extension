@@ -1,21 +1,16 @@
 import { injectable, interfaces } from 'inversify';
-import { RPCProtocol } from '@theia/plugin-ext/lib/common/rpc-protocol';
 import { MainPluginApiProvider } from '@theia/plugin-ext';
+import { RPCProtocol } from '@theia/plugin-ext/lib/common/rpc-protocol';
 import { PLUGIN_RPC_CONTEXT } from '../common/api-rpc';
 import { ApiMainImpl } from './api-main-impl';
 
 @injectable()
 export class RpcProvider implements MainPluginApiProvider {
-
-    private apiMain!: ApiMainImpl;
+    public api!: ApiMainImpl;
 
     public initialize(rpc: RPCProtocol, container: interfaces.Container): void {
-        this.apiMain = new ApiMainImpl(container, rpc);
-        rpc.set(PLUGIN_RPC_CONTEXT.API_MAIN, this.apiMain);
-    }
-
-    public getData(): Promise<string | undefined> {
-        return this.apiMain.getData();
+        this.api = new ApiMainImpl(container, rpc);
+        rpc.set(PLUGIN_RPC_CONTEXT.API_MAIN, this.api);
     }
 }
 
