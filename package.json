@@ -8,7 +8,7 @@
   "author": "Rob Moran <github@thegecko.org>",
   "scripts": {
     "prepare": "yarn build && yarn package",
-    "clean": "lerna run clean && lerna clean --yes",
+    "clean": "lerna run clean && lerna clean --yes && git clean -f -x ./node_modules",
     "build": "lerna run build",
     "package": "lerna run package"
   },

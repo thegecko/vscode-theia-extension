@@ -14,16 +14,16 @@
     "vscode": "^1.50.0"
   },
   "dependencies": {
+    "@extension/api": "1.0.0",
     "@types/vscode": "^1.50.0"
   },
   "devDependencies": {
-    "@extension/api": "^1.0.0",
     "typescript": "^3.9.6",
     "vsce-yarn-patch": "^1.66.2"
   },
   "scripts": {
     "prepare": "yarn build",
-    "clean": "git clean -f -x ./node_modules ./lib",
+    "clean": "git clean -f -x ./node_modules ./lib ./*.vsix",
     "build": "tsc",
     "package": "vsce package --yarn"
   },

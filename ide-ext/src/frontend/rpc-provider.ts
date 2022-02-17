@@ -5,13 +5,17 @@ import { PLUGIN_RPC_CONTEXT } from '../common/api-rpc';
 import { ApiMainImpl } from './api-main-impl';
 
 @injectable()
-class RpcProvider implements MainPluginApiProvider {
+export class RpcProvider implements MainPluginApiProvider {
 
-    private apiMain: ApiMainImpl | undefined;
+    private apiMain!: ApiMainImpl;
 
     public initialize(rpc: RPCProtocol, container: interfaces.Container): void {
         this.apiMain = new ApiMainImpl(container, rpc);
         rpc.set(PLUGIN_RPC_CONTEXT.API_MAIN, this.apiMain);
+    }
+
+    public getData(): Promise<string | undefined> {
+        return this.apiMain.getData();
     }
 }
 

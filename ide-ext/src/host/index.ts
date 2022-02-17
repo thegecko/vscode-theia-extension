@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import * as api from '@extension/api';
 import { RPCProtocol } from '@theia/plugin-ext/lib/common/rpc-protocol';
 import { emptyPlugin, PluginManager, ExtPluginApiBackendInitializationFn } from '@theia/plugin-ext';

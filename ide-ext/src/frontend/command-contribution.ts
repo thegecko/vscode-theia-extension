@@ -1,5 +1,6 @@
-import { injectable, interfaces } from '@theia/core/shared/inversify';
+import { inject, injectable, interfaces } from '@theia/core/shared/inversify';
 import { Command, CommandContribution, CommandRegistry } from '@theia/core/lib/common';
+import { RpcProvider } from './rpc-provider';
 
 @injectable()
 export class Contribution implements CommandContribution {
@@ -9,10 +10,13 @@ export class Contribution implements CommandContribution {
         label: 'Request Port'
     };
 
+    @inject(RpcProvider) protected rpcProvider!: RpcProvider;
+
     registerCommands(commands: CommandRegistry): void {
         commands.registerCommand(this.command, {
             execute: async () => {
-                return undefined;
+                const data = await this.rpcProvider.getData();
+                console.log(data);
             }
         });
     }
