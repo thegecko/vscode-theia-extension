@@ -1,10 +1,13 @@
 import 'reflect-metadata';
+import * as theia from '@theia/plugin';
 import * as api from '@extension/api';
+import { emptyPlugin, Plugin, PluginManager, ExtPluginApiBackendInitializationFn } from '@theia/plugin-ext';
 import { RPCProtocol } from '@theia/plugin-ext/lib/common/rpc-protocol';
-import { emptyPlugin, PluginManager, ExtPluginApiBackendInitializationFn } from '@theia/plugin-ext';
-import { ApiFactory, createApiFactory } from './plugin-context';
+import { ApiExtImpl } from './api-ext-impl';
+import { FRONTEND_RPC_CONTEXT } from '../common/api-rpc';
 
 const PLUGIN_NAME = '@extension/api';
+type ApiFactory = (plugin: Plugin) => typeof api;
 
 const implementations = new Map<string, typeof api>();
 let defaultRpc: typeof api;
@@ -20,6 +23,28 @@ export const provideApi: ExtPluginApiBackendInitializationFn = (rpc: RPCProtocol
     if (!isLoadOverride) {
         overrideInternalLoad();
         isLoadOverride = true;
+    }
+};
+
+const createApiFactory = (rpc: RPCProtocol): ApiFactory => {
+    const apiExt = rpc.set(FRONTEND_RPC_CONTEXT.API_EXT, new ApiExtImpl(rpc));
+
+    return (): typeof api  => {
+        const host: typeof api.host = {
+            showMessage(message: string): void {
+                return apiExt.showMessage(message);
+            },
+            getMessageHandler(handler: () => string): Promise<void> {
+                return apiExt.addMessageHandler(handler);
+            },
+            get onRequestMessage(): theia.Event<string> {
+                return apiExt.onRequestMessage;
+            }
+        }
+
+        return <typeof api> {
+            host
+        };
     }
 };
 
