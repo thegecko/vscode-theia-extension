@@ -28,9 +28,9 @@ export class ApiExtImpl implements ApiExt {
 
     public async $getMessage(): Promise<string | undefined> {
         for (const handler of this.messageHandlers) {
-            const data = handler();
-            if (data) {
-                return data;
+            const message = handler();
+            if (message) {
+                return message;
             }
         }
 

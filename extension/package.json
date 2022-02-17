@@ -30,8 +30,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "showData",
-        "title": "Show Data"
+        "command": "showMessage",
+        "title": "Show Message"
       }
     ],
     "viewsContainers": {
@@ -46,17 +46,17 @@
     "views": {
       "extension": [
         {
-          "id": "extension.data",
+          "id": "extension.message",
           "type": "tree",
-          "name": "Data",
+          "name": "Message",
           "when": "extension.showViews"
         }
       ]
     },
     "viewsWelcome": [
       {
-        "view": "extension.data",
-        "contents": "[Show Data](command:showData)"
+        "view": "extension.message",
+        "contents": "[Show message](command:showMessage)"
       }
     ],
     "menus": {}

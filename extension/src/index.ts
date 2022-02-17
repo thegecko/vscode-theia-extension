@@ -29,7 +29,7 @@ export const activate = async (context: vscode.ExtensionContext): Promise<void> 
     } else {
         // Register command for VS Code
         context.subscriptions.push(
-            vscode.commands.registerCommand('showData', () => {
+            vscode.commands.registerCommand('showMessage', () => {
                 const message = getMessage();
                 vscode.window.showInformationMessage(message);
             }),
