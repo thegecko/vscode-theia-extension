@@ -8,6 +8,23 @@ const getMessage = (actor: string = 'the extension'): string => {
 };
 
 export const activate = async (context: vscode.ExtensionContext): Promise<void> => {
+    const deviceTree = vscode.window.createTreeView('extension.message', {
+        treeDataProvider: {
+            getTreeItem: () => ({}),
+            getChildren: () => []    
+        }
+    });
+
+    context.subscriptions.push(
+        deviceTree,
+        vscode.commands.registerCommand('showMessage', () => {
+            const message = getMessage();
+            vscode.window.showInformationMessage(message);
+        }),
+    );
+
+    // Enable VS Code views
+    vscode.commands.executeCommand('setContext', 'extension.showViews', vscode.env.appName !== THEIA_APP_NAME);
 
     if (vscode.env.appName === THEIA_APP_NAME) {
         // Implement Theia API
@@ -23,19 +40,5 @@ export const activate = async (context: vscode.ExtensionContext): Promise<void> 
         if (commands.indexOf(THEIA_CUSTOM_COMMAND) > -1) {
             vscode.commands.executeCommand(THEIA_CUSTOM_COMMAND);
         }
-
-        // Disable VS Code views
-        vscode.commands.executeCommand('setContext', 'extension.showViews', false);
-    } else {
-        // Register command for VS Code
-        context.subscriptions.push(
-            vscode.commands.registerCommand('showMessage', () => {
-                const message = getMessage();
-                vscode.window.showInformationMessage(message);
-            }),
-        );
-
-        // Enable VS Code views
-        vscode.commands.executeCommand('setContext', 'extension.showViews', true);
     }
 };
