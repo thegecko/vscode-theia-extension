@@ -18,10 +18,10 @@ This extension is found in the `extension` package with the Theia plugin namespa
 
 Four custom methods of calling into Theia are outlined:
 
-- [A function handler](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L13)
-- [A custom event from Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L14)
-- [A custom function in Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L16)
-- [Executing a custom command in Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L22)
+- [A function handler](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L11)
+- [A custom event from Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L12)
+- [A custom function in Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L14)
+- [Executing a custom command in Theia](https://github.com/thegecko/vscode-theia-extension/blob/main/extension/src/theia.ts#L20)
 
 ## Running
 
